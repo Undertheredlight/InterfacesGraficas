@@ -53,9 +53,7 @@ public class Ventana {
         Etiqueta();                                                             //Llama al método etiqueta
         CajaTexto();                                                            //Llama al método Cajatexto
         Boton();                                                                //Llama al método boton
-        
-      
-        
+
     }
 
     public void Panel() { //es void porque no quiero que devuelva nada. Sólo que haga algo. Método para construir un panel
