@@ -35,7 +35,7 @@ public class Ventana {
 
         frame.setTitle("Java Swing");                                           //Darle titulo a la ventana
 
-        frame.setSize(300, 200);                                                 //elige el tamaño de la panlla en px
+        frame.setSize(500, 400);                                                 //elige el tamaño de la panlla en px
         frame.setResizable(true);                                               //Para permitir (o no) que se cambie el tamaño de la ventana
         //frame.setExtendedState(JFrame.MAXIMIZED_BOTH);                        //Para poner la pantalla completa
 
@@ -107,7 +107,7 @@ public class Ventana {
     public void Boton() { //Método para crear un boton
         //boton.setHorizontalAlignment(SwingConstants.LEFT);
 
-        boton.setForeground(Color.black);
+        boton.setForeground(Color.YELLOW);
         boton.setBackground(Color.white);
         boton.setFont(new Font("Gill Sans MT", Font.BOLD, 25));
 
