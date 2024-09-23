@@ -9,6 +9,8 @@ import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Panel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -27,7 +29,7 @@ public class Ventana {
     JPanel panel = new JPanel();                                                //Objeto tipo JPanel 
     JLabel etiqueta = new JLabel();                                             //Objeto tipo JLabel/Etiqueta
     JTextField cajaTexto = new JTextField();                                    //Objeto tipo JTextfield/Cuadro de texto
-    JButton boton = new JButton();                                              //Objeto tipo JButton
+                                                 //Objeto tipo JButton
 
     //Creamos la ventana
     public Ventana() {                                                          //contructor vacío para la ventana JFrame
@@ -76,7 +78,7 @@ public class Ventana {
 
     public void Etiqueta() { //Metodo para construir una etiqueta
 
-        etiqueta.setText("Pistacho");
+        etiqueta.setText("Nombre:");
 
         etiqueta.setBounds(50, 60, 100, 50);                                    //Para añadir coordenadas (los 2 primeros) y dimensiones (2 ultimos)
 
@@ -86,7 +88,7 @@ public class Ventana {
         etiqueta.setForeground(Color.black);                                    //color texto de la etiqueta
         etiqueta.setBackground(Color.white);                                    //color de fondo de la etiqueta
 
-        etiqueta.setFont(new Font("Ink Free", Font.BOLD, 30));
+        etiqueta.setFont(new Font("Ink Free", Font.BOLD, 15));
 
         panel.add(etiqueta);
 
@@ -96,7 +98,8 @@ public class Ventana {
         cajaTexto.setBounds(160, 60, 280, 50);
 
         cajaTexto.setHorizontalAlignment(SwingConstants.CENTER);
-        cajaTexto.setFont(new Font("Monotype Corsiva", 0, 10));
+        cajaTexto.setFont(new Font("Monotype Corsiva", 0, 25));
+        //cajaTexto.setText("Escribe"); //añadir texto a la caja, por feceto se puede borrar
 
         cajaTexto.setForeground(Color.black);
         cajaTexto.setBackground(Color.white);
@@ -104,13 +107,44 @@ public class Ventana {
         panel.add(cajaTexto);
     }
 
+    
+    
+    
     public void Boton() { //Método para crear un boton
         //boton.setHorizontalAlignment(SwingConstants.LEFT);
-
-        boton.setForeground(Color.YELLOW);
-        boton.setBackground(Color.white);
+        JButton boton = new JButton(); 
+        boton.setBounds(50, 120, 390, 50);
+        
+        
+        boton.setText("PULSAME");
+        boton.setForeground(Color.black);
+        boton.setBackground(Color.CYAN);
         boton.setFont(new Font("Gill Sans MT", Font.BOLD, 25));
+        
+        JLabel respuesta = new JLabel();
+        panel.add(respuesta);
 
+        ActionListener pulsar = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                respuesta.setBounds(50, 180, 390, 50);                          //Genero una etiqueta
+                
+                respuesta.setOpaque(true);
+                respuesta.setHorizontalAlignment(SwingConstants.CENTER);
+                respuesta.setBackground(Color.GRAY);
+                respuesta.setText("Estas suspenso "+cajaTexto.getText()+"!!");
+                respuesta.setFont(new Font("Times New Roman",Font.BOLD,18));
+                
+                panel.add(respuesta);
+                //throw new UnsupportedOperationException("Not supported yet.");   arroja una excepcion por defecto
+            }
+        };
+        
+        //Como se activa un action Listener()
+        
+        boton.addActionListener(pulsar); //cuando le doy click al botón
+        cajaTexto.addActionListener(pulsar); //cuando le doy al intro
+        
         panel.add(boton);
     }
 
