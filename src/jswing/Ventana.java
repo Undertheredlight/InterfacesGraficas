@@ -8,10 +8,12 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -29,15 +31,15 @@ public class Ventana {
     JPanel panel = new JPanel();                                                //Objeto tipo JPanel 
     JLabel etiqueta = new JLabel();                                             //Objeto tipo JLabel/Etiqueta
     JTextField cajaTexto = new JTextField();                                    //Objeto tipo JTextfield/Cuadro de texto
-                                                 //Objeto tipo JButton
+    JLabel fondo =  new JLabel();                                                                   
 
     //Creamos la ventana
-    public Ventana() {                                                          //contructor vacío para la ventana JFrame
+    public Ventana() {                                                          //constructor vacío para la ventana JFrame
         frame.setVisible(true);                                                 //Para que la ventana sea visible. Es obligatorio y no siempre se coloca al principio
 
         frame.setTitle("Java Swing");                                           //Darle titulo a la ventana
 
-        frame.setSize(500, 400);                                                 //elige el tamaño de la panlla en px
+        frame.setSize(1200, 700);                                                 //elige el tamaño de la panlla en px
         frame.setResizable(true);                                               //Para permitir (o no) que se cambie el tamaño de la ventana
         //frame.setExtendedState(JFrame.MAXIMIZED_BOTH);                        //Para poner la pantalla completa
 
@@ -55,9 +57,23 @@ public class Ventana {
         Etiqueta();                                                             //Llama al método etiqueta
         CajaTexto();                                                            //Llama al método Cajatexto
         Boton();                                                                //Llama al método boton
-
+        EtiquetaImagen();                                                       //Llama al método etiquetaImagen
+        FondoPantalla();
+        
+        panel.updateUI();
     }
 
+    public void FondoPantalla(){
+        fondo.setBounds(0, 0, 500, 500);
+        
+        ImageIcon imagen = new ImageIcon("imagenes/Gatito.jpg");
+        fondo.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(fondo.getWidth(), fondo.getHeight(), Image.SCALE_DEFAULT)));
+        
+        //fondo.setBackground(Color.red);
+        
+        panel.add(fondo);
+    }
+    
     public void Panel() { //es void porque no quiero que devuelva nada. Sólo que haga algo. Método para construir un panel
         //voy a imitar el panel
 
@@ -72,7 +88,7 @@ public class Ventana {
         //panel.setLayout(new GridBagLayout());                                 //Una cuadricula flexible 
         //panel.setLayout(new BoxLayout(panel, 0));                             //Por coordenadas
         panel.setLayout(null);                                                  //Desactiva el layaout por defecto
-        panel.setBackground(Color.BLACK);                                       //Para cambiar el color del panel
+        panel.setBackground(Color.GRAY);                                       //Para cambiar el color del panel
 
     }
 
@@ -106,17 +122,20 @@ public class Ventana {
 
         panel.add(cajaTexto);
     }
-
-    
-    
     
     public void Boton() { //Método para crear un boton
         //boton.setHorizontalAlignment(SwingConstants.LEFT);
-        JButton boton = new JButton(); 
-        boton.setBounds(50, 120, 390, 50);
+        JButton boton = new JButton();                          //Objeto tipo JButton
+        boton.setBounds(50, 150, 100, 100 );
         
         
-        boton.setText("PULSAME");
+        
+        ImageIcon imagenBoton = new ImageIcon("imagenes/gatito.jpg");
+        boton.setIcon(imagenBoton);
+        
+        boton.setIcon(new ImageIcon(imagenBoton.getImage().getScaledInstance(boton.getWidth(), boton.getHeight(), Image.SCALE_DEFAULT)));
+        
+        //boton.setText("PULSAME");
         boton.setForeground(Color.black);
         boton.setBackground(Color.CYAN);
         boton.setFont(new Font("Gill Sans MT", Font.BOLD, 25));
@@ -148,4 +167,28 @@ public class Ventana {
         panel.add(boton);
     }
 
+    public void EtiquetaImagen(){
+        
+        //por defecto, la imagenes tienen el tamaño predeterminado. Si se quiere modificar la imagen hay que cambiarlo manualmente
+        
+       //JLabel etiquetaImagen = new JLabel(new ImageIcon("imagenes/cdmfp.jpg"));    //añadir la imagen en el constructor
+       
+       ImageIcon imagen = new ImageIcon("imagenes/cdmfp.jpg");  //imagen independiente
+       JLabel etiquetaImagen = new JLabel();                    //etiqueta independiente
+       
+       //etiquetaImagen.setIcon(imagen);                        //añadirla imagen tal cual a la etiqueta
+
+        //indico la posicion de la imagen
+       etiquetaImagen.setBounds(50, 50, 500, 300);
+       
+       
+       //PARA CAMBIAR TAMAÑO IMAGEN DIRECTO
+       etiquetaImagen.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(etiquetaImagen.getWidth(), etiquetaImagen.getHeight(), Image.SCALE_DEFAULT)));
+       
+       panel.add(etiquetaImagen); //añado la etiqueta al panel
+      
+       
+       
+       
+    }
 }
