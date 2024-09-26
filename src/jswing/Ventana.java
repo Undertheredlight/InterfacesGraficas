@@ -39,7 +39,7 @@ public class Ventana {
 
         frame.setTitle("Java Swing");                                           //Darle titulo a la ventana
 
-        frame.setSize(1200, 700);                                                 //elige el tamaño de la panlla en px
+        frame.setSize(1200, 200);                                                 //elige el tamaño de la panlla en px
         frame.setResizable(true);                                               //Para permitir (o no) que se cambie el tamaño de la ventana
         //frame.setExtendedState(JFrame.MAXIMIZED_BOTH);                        //Para poner la pantalla completa
 
