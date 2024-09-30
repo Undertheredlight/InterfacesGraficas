@@ -2,7 +2,7 @@ package PracticaRifa;
 
 /**
  *
- * @Liz FP
+ * @author Liz
  */
 public class Rifa {
 
