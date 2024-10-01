@@ -2,6 +2,8 @@ package PracticaRifa;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -14,7 +16,9 @@ import javax.swing.SwingConstants;
  * @author Liz
  */
 public class Ventana {
-
+    
+    Juego juego = new Juego();
+    
     JFrame ventana = new JFrame();
     JPanel panel = new JPanel();
     
@@ -25,13 +29,13 @@ public class Ventana {
     JLabel numtres = new JLabel("N3");
     JLabel numcuatro = new JLabel("N4");
     JLabel numcinco = new JLabel("N5");
-
+    
     JTextField cajauno = new JTextField();
     JTextField cajados = new JTextField();
     JTextField cajatres = new JTextField();
     JTextField cajacuatro = new JTextField();
     JTextField cajacinco = new JTextField();
-
+    
     JButton botonaleatorio = new JButton();
     JButton botonrellena = new JButton();
     JButton botonstart = new JButton();
@@ -43,7 +47,7 @@ public class Ventana {
     JLabel numero = new JLabel();
     JLabel ganador = new JLabel();
     JLabel cantidad = new JLabel();
-
+    
     public Ventana() {
         ventana.setVisible(true);
         ventana.setTitle("Rifa_Liz_Contreras");
@@ -51,7 +55,7 @@ public class Ventana {
         ventana.setResizable(true);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ventana.setLocation(350, 200);
-
+        
         Panel();
         Etiqueta();
         Numuno();
@@ -75,13 +79,13 @@ public class Ventana {
         PremioCantidad();
         
     }
-
+    
     public void Panel() {
         ventana.add(panel);
         panel.setLayout(null);
         panel.setBackground(Color.LIGHT_GRAY);
     }
-
+    
     public void Etiqueta() {
         titulo.setText("EUROMILLONES");
         titulo.setFont(new Font("Gill Sans MT", Font.BOLD, 25));
@@ -90,7 +94,7 @@ public class Ventana {
         titulo.setForeground(Color.black);
         panel.add(titulo);
     }
-
+    
     public void Numuno() {
         numuno.setForeground(Color.BLACK);
         numuno.setHorizontalAlignment(SwingConstants.CENTER);
@@ -98,7 +102,7 @@ public class Ventana {
         numuno.setBounds(40, 100, 50, 50);
         panel.add(numuno);
     }
-
+    
     public void Numdos() {
         numdos.setForeground(Color.BLACK);
         numdos.setHorizontalAlignment(SwingConstants.CENTER);
@@ -106,7 +110,7 @@ public class Ventana {
         numdos.setBounds(150, 100, 50, 50);
         panel.add(numdos);
     }
-
+    
     public void Numtres() {
         numtres.setForeground(Color.BLACK);
         numtres.setHorizontalAlignment(SwingConstants.CENTER);
@@ -114,7 +118,7 @@ public class Ventana {
         numtres.setBounds(250, 100, 50, 50);
         panel.add(numtres);
     }
-
+    
     public void Numcuatro() {
         numcuatro.setForeground(Color.BLACK);
         numcuatro.setHorizontalAlignment(SwingConstants.CENTER);
@@ -122,7 +126,7 @@ public class Ventana {
         numcuatro.setBounds(350, 100, 50, 50);
         panel.add(numcuatro);
     }
-
+    
     public void Numcinco() {
         numcinco.setForeground(Color.BLACK);
         numcinco.setHorizontalAlignment(SwingConstants.CENTER);
@@ -130,7 +134,7 @@ public class Ventana {
         numcinco.setBounds(450, 100, 50, 50);
         panel.add(numcinco);
     }
-
+    
     public void Cajauno() {
         cajauno.setBounds(100, 100, 50, 50);
         cajauno.setHorizontalAlignment(SwingConstants.CENTER);
@@ -139,7 +143,7 @@ public class Ventana {
         cajauno.setBackground(Color.white);
         panel.add(cajauno);
     }
-
+    
     public void Cajados() {
         cajados.setBounds(200, 100, 50, 50);
         cajados.setHorizontalAlignment(SwingConstants.CENTER);
@@ -148,7 +152,7 @@ public class Ventana {
         cajados.setBackground(Color.white);
         panel.add(cajados);
     }
-
+    
     public void Cajatres() {
         cajatres.setBounds(300, 100, 50, 50);
         cajatres.setHorizontalAlignment(SwingConstants.CENTER);
@@ -157,7 +161,7 @@ public class Ventana {
         cajatres.setBackground(Color.white);
         panel.add(cajatres);
     }
-
+    
     public void Cajacuatro() {
         cajacuatro.setBounds(400, 100, 50, 50);
         cajacuatro.setHorizontalAlignment(SwingConstants.CENTER);
@@ -166,7 +170,7 @@ public class Ventana {
         cajacuatro.setBackground(Color.white);
         panel.add(cajacuatro);
     }
-
+    
     public void Cajacinco() {
         cajacinco.setBounds(500, 100, 50, 50);
         cajacinco.setHorizontalAlignment(SwingConstants.CENTER);
@@ -175,7 +179,7 @@ public class Ventana {
         cajacinco.setBackground(Color.white);
         panel.add(cajacinco);
     }
-
+    
     public void BotonAleatorio() {
         botonaleatorio.setBounds(50, 200, 200, 50);
         botonaleatorio.setText("Aleatorio");
@@ -183,8 +187,20 @@ public class Ventana {
         botonaleatorio.setBackground(Color.BLACK);
         botonaleatorio.setFont(new Font("Gill Sans MT", Font.BOLD, 20));
         panel.add(botonaleatorio);
+        
+        botonaleatorio.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int[] numeros = juego.cartonAleatorio();
+                cajauno.setText(String.valueOf(numeros[0]));
+                cajados.setText(String.valueOf(numeros[1]));
+                cajatres.setText(String.valueOf(numeros[2]));
+                cajacuatro.setText(String.valueOf(numeros[3]));
+                cajacinco.setText(String.valueOf(numeros[4]));
+            }
+        });
     }
-
+    
     public void BotonRellena() {
         botonrellena.setBounds(350, 200, 200, 50);
         botonrellena.setText("Rellena");
@@ -192,9 +208,18 @@ public class Ventana {
         botonrellena.setBackground(Color.BLACK);
         botonrellena.setFont(new Font("Gill Sans MT", Font.BOLD, 20));
         panel.add(botonrellena);
+        
+        botonrellena.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String todoslosnumeros = cajauno.getText() + cajados.getText() + cajatres.getText() + cajacuatro.getText() + cajacinco.getText();
+                
+                numero.setText(todoslosnumeros);
+            }
+        });
     }
     
-    public void MostrarNumero(){
+    public void MostrarNumero() {
         mostrarnumero.setText("Mostrar Número:");
         mostrarnumero.setFont(new Font("Gill Sans MT", Font.BOLD, 15));
         mostrarnumero.setBounds(40, 300, 200, 50);
@@ -203,7 +228,7 @@ public class Ventana {
         panel.add(mostrarnumero);
     }
     
-    public void NumerosGanadores(){
+    public void NumerosGanadores() {
         numerosganadores.setText("Números Ganadores:");
         numerosganadores.setFont(new Font("Gill Sans MT", Font.BOLD, 15));
         numerosganadores.setBounds(40, 350, 200, 50);
@@ -211,8 +236,8 @@ public class Ventana {
         numerosganadores.setForeground(Color.black);
         panel.add(numerosganadores);
     }
-     
-    public void Premio(){
+    
+    public void Premio() {
         premio.setText("Cantidad de Premio:");
         premio.setFont(new Font("Gill Sans MT", Font.BOLD, 15));
         premio.setBounds(40, 400, 200, 50);
@@ -220,7 +245,7 @@ public class Ventana {
         premio.setForeground(Color.black);
         panel.add(premio);
     }
-     
+    
     public void Start() {
         botonstart.setBounds(450, 450, 100, 50);
         botonstart.setText("Start");
@@ -228,35 +253,50 @@ public class Ventana {
         botonstart.setBackground(Color.BLACK);
         botonstart.setFont(new Font("Gill Sans MT", Font.BOLD, 20));
         panel.add(botonstart);
+        
+        botonstart.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int[] numeroGanador = juego.cartonAleatorio();
+                
+                String numeroConcatenado = "";
+                for (int i = 0; i < numeroGanador.length; i++) {
+                    numeroConcatenado += numeroGanador[i];
+                    
+                }
+                ganador.setText(numeroConcatenado);
+            }
+            
+        });
     }
-     
-    public void Numero(){
-        numero.setBounds(220,310, 150, 30);                                   
-        numero.setHorizontalAlignment(SwingConstants.CENTER);               
-        numero.setOpaque(true);                                            
-        numero.setForeground(Color.black);                                   
-        numero.setBackground(Color.white);                                    
-        numero.setFont(new Font("Gill Sans MT", Font.BOLD, 5));
+    
+    public void Numero() {
+        numero.setBounds(220, 310, 150, 30);        
+        numero.setHorizontalAlignment(SwingConstants.CENTER);        
+        numero.setOpaque(true);        
+        numero.setForeground(Color.black);        
+        numero.setBackground(Color.white);        
+        numero.setFont(new Font("Gill Sans MT", Font.BOLD, 10));
         panel.add(numero);
     }
     
-    public void Ganador(){
-        ganador.setBounds(220,360, 150, 30);                                   
-        ganador.setHorizontalAlignment(SwingConstants.CENTER);               
-        ganador.setOpaque(true);                                            
-        ganador.setForeground(Color.black);                                   
-        ganador.setBackground(Color.white);                                    
-        ganador.setFont(new Font("Gill Sans MT", Font.BOLD, 5));
+    public void Ganador() {
+        ganador.setBounds(220, 360, 150, 30);        
+        ganador.setHorizontalAlignment(SwingConstants.CENTER);        
+        ganador.setOpaque(true);        
+        ganador.setForeground(Color.black);        
+        ganador.setBackground(Color.white);        
+        ganador.setFont(new Font("Gill Sans MT", Font.BOLD, 10));
         panel.add(ganador);
     }
     
-    public void PremioCantidad(){
-        cantidad.setBounds(220,410, 150, 30);                                   
-        cantidad.setHorizontalAlignment(SwingConstants.CENTER);               
-        cantidad.setOpaque(true);                                            
-        cantidad.setForeground(Color.black);                                   
-        cantidad.setBackground(Color.white);                                    
-        cantidad.setFont(new Font("Gill Sans MT", Font.BOLD, 5));
+    public void PremioCantidad() {
+        cantidad.setBounds(220, 410, 150, 30);        
+        cantidad.setHorizontalAlignment(SwingConstants.CENTER);        
+        cantidad.setOpaque(true);        
+        cantidad.setForeground(Color.black);        
+        cantidad.setBackground(Color.white);        
+        cantidad.setFont(new Font("Gill Sans MT", Font.BOLD, 10));
         panel.add(cantidad);
     }
     
