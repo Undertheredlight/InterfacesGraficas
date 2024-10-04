@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
@@ -31,7 +32,8 @@ public class Ventana {
     JPanel panel = new JPanel();                                                //Objeto tipo JPanel 
     JLabel etiqueta = new JLabel();                                             //Objeto tipo JLabel/Etiqueta
     JTextField cajaTexto = new JTextField();                                    //Objeto tipo JTextfield/Cuadro de texto
-    JLabel fondo =  new JLabel();                                                                   
+    JLabel fondo = new JLabel();
+    JTextArea area = new JTextArea();
 
     //Creamos la ventana
     public Ventana() {                                                          //constructor vacío para la ventana JFrame
@@ -39,7 +41,7 @@ public class Ventana {
 
         frame.setTitle("Java Swing");                                           //Darle titulo a la ventana
 
-        frame.setSize(1200, 200);                                                 //elige el tamaño de la panlla en px
+        frame.setSize(900, 600);                                                 //elige el tamaño de la panlla en px
         frame.setResizable(true);                                               //Para permitir (o no) que se cambie el tamaño de la ventana
         //frame.setExtendedState(JFrame.MAXIMIZED_BOTH);                        //Para poner la pantalla completa
 
@@ -57,23 +59,24 @@ public class Ventana {
         Etiqueta();                                                             //Llama al método etiqueta
         CajaTexto();                                                            //Llama al método Cajatexto
         Boton();                                                                //Llama al método boton
+
         EtiquetaImagen();                                                       //Llama al método etiquetaImagen
+        AreaDeTexto();
+        BotonArea();
         FondoPantalla();
-        
-        panel.updateUI();
+
+        panel.updateUI();                                                       //Actualiza el panel
     }
 
-    public void FondoPantalla(){
+    public void FondoPantalla() {
         fondo.setBounds(0, 0, 500, 500);
-        
-        ImageIcon imagen = new ImageIcon("imagenes/Gatito.jpg");
-        fondo.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(fondo.getWidth(), fondo.getHeight(), Image.SCALE_DEFAULT)));
-        
+
+        //ImageIcon imagen = new ImageIcon("imagenes/Gatito.jpg");
+        //fondo.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(fondo.getWidth(), fondo.getHeight(), Image.SCALE_DEFAULT)));
         //fondo.setBackground(Color.red);
-        
         panel.add(fondo);
     }
-    
+
     public void Panel() { //es void porque no quiero que devuelva nada. Sólo que haga algo. Método para construir un panel
         //voy a imitar el panel
 
@@ -122,24 +125,22 @@ public class Ventana {
 
         panel.add(cajaTexto);
     }
-    
+
     public void Boton() { //Método para crear un boton
         //boton.setHorizontalAlignment(SwingConstants.LEFT);
         JButton boton = new JButton();                          //Objeto tipo JButton
-        boton.setBounds(50, 150, 100, 100 );
-        
-        
-        
-        ImageIcon imagenBoton = new ImageIcon("imagenes/gatito.jpg");
+        boton.setBounds(50, 150, 100, 100);
+
+        ImageIcon imagenBoton = new ImageIcon("imagenes/gatito.jpg");           //le asigno una imagen al boton
         boton.setIcon(imagenBoton);
-        
+
         boton.setIcon(new ImageIcon(imagenBoton.getImage().getScaledInstance(boton.getWidth(), boton.getHeight(), Image.SCALE_DEFAULT)));
-        
+
         //boton.setText("PULSAME");
         boton.setForeground(Color.black);
         boton.setBackground(Color.CYAN);
         boton.setFont(new Font("Gill Sans MT", Font.BOLD, 25));
-        
+
         JLabel respuesta = new JLabel();
         panel.add(respuesta);
 
@@ -147,48 +148,77 @@ public class Ventana {
             @Override
             public void actionPerformed(ActionEvent e) {
                 respuesta.setBounds(50, 180, 390, 50);                          //Genero una etiqueta
-                
+
                 respuesta.setOpaque(true);
                 respuesta.setHorizontalAlignment(SwingConstants.CENTER);
                 respuesta.setBackground(Color.GRAY);
-                respuesta.setText("Estas suspenso "+cajaTexto.getText()+"!!");
-                respuesta.setFont(new Font("Times New Roman",Font.BOLD,18));
-                
+                respuesta.setText("Estas suspenso " + cajaTexto.getText() + "!!");
+                respuesta.setFont(new Font("Times New Roman", Font.BOLD, 18));
+
                 panel.add(respuesta);
                 //throw new UnsupportedOperationException("Not supported yet.");   arroja una excepcion por defecto
             }
         };
-        
+
         //Como se activa un action Listener()
-        
         boton.addActionListener(pulsar); //cuando le doy click al botón
         cajaTexto.addActionListener(pulsar); //cuando le doy al intro
-        
+
         panel.add(boton);
     }
 
-    public void EtiquetaImagen(){
-        
-        //por defecto, la imagenes tienen el tamaño predeterminado. Si se quiere modificar la imagen hay que cambiarlo manualmente
-        
-       //JLabel etiquetaImagen = new JLabel(new ImageIcon("imagenes/cdmfp.jpg"));    //añadir la imagen en el constructor
-       
-       ImageIcon imagen = new ImageIcon("imagenes/cdmfp.jpg");  //imagen independiente
-       JLabel etiquetaImagen = new JLabel();                    //etiqueta independiente
-       
-       //etiquetaImagen.setIcon(imagen);                        //añadirla imagen tal cual a la etiqueta
+    public void EtiquetaImagen() {
 
+        //por defecto, la imagenes tienen el tamaño predeterminado. Si se quiere modificar la imagen hay que cambiarlo manualmente
+        //JLabel etiquetaImagen = new JLabel(new ImageIcon("imagenes/cdmfp.jpg"));    //añadir la imagen en el constructor
+        ImageIcon imagen = new ImageIcon("imagenes/cdmfp.jpg");  //imagen independiente
+        JLabel etiquetaImagen = new JLabel();                    //etiqueta independiente
+
+        //etiquetaImagen.setIcon(imagen);                        //añadirla imagen tal cual a la etiqueta
         //indico la posicion de la imagen
-       etiquetaImagen.setBounds(50, 50, 500, 300);
+        etiquetaImagen.setBounds(50, 50, 500, 300);
+
+        //PARA CAMBIAR TAMAÑO IMAGEN DIRECTO
+        etiquetaImagen.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(etiquetaImagen.getWidth(), etiquetaImagen.getHeight(), Image.SCALE_DEFAULT)));
+
+        panel.add(etiquetaImagen); //añado la etiqueta al panel
+
+    }
+
+    //nota: permite introducir saltos de linea
+    //nota2: intro añade salto de linea (\n) no permite activar la accion
+    public void AreaDeTexto() {
+        area.setBounds(50, 350, 400, 140);
+        area.setBackground(Color.cyan);
+        area.setFont(new Font("Times New Roman", Font.BOLD, 15));
+        panel.add(area);
+
+    }
+
+    
+    public void BotonArea() {
+        JButton botonArea = new JButton();
+        botonArea.setBounds(500, 350, 100, 100);
        
-       
-       //PARA CAMBIAR TAMAÑO IMAGEN DIRECTO
-       etiquetaImagen.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(etiquetaImagen.getWidth(), etiquetaImagen.getHeight(), Image.SCALE_DEFAULT)));
-       
-       panel.add(etiquetaImagen); //añado la etiqueta al panel
-      
-       
-       
-       
+        
+        botonArea.setText("DALE");
+        botonArea.setForeground(Color.black);
+        botonArea.setBackground(Color.red);
+        botonArea.setFont(new Font("Gill Sans MT", Font.BOLD, 15));
+
+        JLabel respuesta = new JLabel();
+        panel.add(area);
+
+        ActionListener copiar = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String frase = area.getText();
+                System.out.println("La frase copiada es:\n\n "+frase);
+
+            }
+        };
+
+        botonArea.addActionListener(copiar);
+        panel.add(botonArea);
     }
 }

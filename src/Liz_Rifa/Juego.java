@@ -1,3 +1,4 @@
+//funcionamiento del juego
 package Liz_Rifa;
 
 import java.util.ArrayList;

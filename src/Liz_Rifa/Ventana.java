@@ -1,3 +1,4 @@
+//elementos gráficos
 package Liz_Rifa;
 
 import java.awt.Color;
@@ -82,12 +83,7 @@ public class Ventana {
         MostrarNumero();
         NumerosGanadores();
         Bote();
-        BoteTotal();
         Premio();
-        Numero();
-        Ganador();
-        PremioCantidad();
-        PremioTotal();
         Jugadores();
 
     }
@@ -242,7 +238,6 @@ public class Ventana {
                 };
                 juego.agregarCartonJugador(cartonJugador);
 
-
                 int numJugadoresAdicionales = (int) (Math.random() * 11) + 5;
                 for (int i = 0; i < numJugadoresAdicionales; i++) {
                     juego.agregarCartonJugador(juego.cartonAleatorio());
@@ -262,7 +257,6 @@ public class Ventana {
                 }
                 ganador.setText(ganadorConcatenado);
 
-                
             }
         });
     }
@@ -296,6 +290,14 @@ public class Ventana {
         mostrarnumero.setHorizontalAlignment(SwingConstants.LEFT);
         mostrarnumero.setForeground(Color.black);
         panel.add(mostrarnumero);
+
+        numero.setBounds(220, 310, 150, 30);
+        numero.setHorizontalAlignment(SwingConstants.CENTER);
+        numero.setOpaque(true);
+        numero.setForeground(Color.black);
+        numero.setBackground(Color.white);
+        numero.setFont(new Font("Gill Sans MT", Font.BOLD, 10));
+        panel.add(numero);
     }
 
     public void NumerosGanadores() {
@@ -305,6 +307,14 @@ public class Ventana {
         numerosganadores.setHorizontalAlignment(SwingConstants.LEFT);
         numerosganadores.setForeground(Color.black);
         panel.add(numerosganadores);
+
+        ganador.setBounds(220, 360, 150, 30);
+        ganador.setHorizontalAlignment(SwingConstants.CENTER);
+        ganador.setOpaque(true);
+        ganador.setForeground(Color.black);
+        ganador.setBackground(Color.white);
+        ganador.setFont(new Font("Gill Sans MT", Font.BOLD, 10));
+        panel.add(ganador);
     }
 
     public void Jugadores() {
@@ -331,48 +341,7 @@ public class Ventana {
         bote.setHorizontalAlignment(SwingConstants.LEFT);
         bote.setForeground(Color.black);
         panel.add(bote);
-    }
 
-    public void Premio() {
-        premio.setText("Premio:");
-        premio.setFont(new Font("Gill Sans MT", Font.BOLD, 15));
-        premio.setBounds(40, 500, 200, 50);
-        premio.setHorizontalAlignment(SwingConstants.LEFT);
-        premio.setForeground(Color.black);
-        panel.add(premio);
-    }
-
-    public void Numero() {
-        numero.setBounds(220, 310, 150, 30);
-        numero.setHorizontalAlignment(SwingConstants.CENTER);
-        numero.setOpaque(true);
-        numero.setForeground(Color.black);
-        numero.setBackground(Color.white);
-        numero.setFont(new Font("Gill Sans MT", Font.BOLD, 10));
-        panel.add(numero);
-    }
-
-    public void Ganador() {
-        ganador.setBounds(220, 360, 150, 30);
-        ganador.setHorizontalAlignment(SwingConstants.CENTER);
-        ganador.setOpaque(true);
-        ganador.setForeground(Color.black);
-        ganador.setBackground(Color.white);
-        ganador.setFont(new Font("Gill Sans MT", Font.BOLD, 10));
-        panel.add(ganador);
-    }
-
-    public void PremioCantidad() {
-        cantidad.setBounds(220, 410, 150, 30);
-        cantidad.setHorizontalAlignment(SwingConstants.CENTER);
-        cantidad.setOpaque(true);
-        cantidad.setForeground(Color.black);
-        cantidad.setBackground(Color.white);
-        cantidad.setFont(new Font("Gill Sans MT", Font.BOLD, 10));
-        panel.add(cantidad);
-    }
-
-    public void BoteTotal() {
         boteTotal.setBounds(220, 460, 150, 30);
         boteTotal.setHorizontalAlignment(SwingConstants.CENTER);
         boteTotal.setOpaque(true);
@@ -382,7 +351,14 @@ public class Ventana {
         panel.add(boteTotal);
     }
 
-    public void PremioTotal() {
+    public void Premio() {
+        premio.setText("Premio:");
+        premio.setFont(new Font("Gill Sans MT", Font.BOLD, 15));
+        premio.setBounds(40, 500, 200, 50);
+        premio.setHorizontalAlignment(SwingConstants.LEFT);
+        premio.setForeground(Color.black);
+        panel.add(premio);
+
         PremioTotal.setBounds(220, 510, 150, 30);
         PremioTotal.setHorizontalAlignment(SwingConstants.CENTER);
         PremioTotal.setOpaque(true);
@@ -391,4 +367,5 @@ public class Ventana {
         PremioTotal.setFont(new Font("Gill Sans MT", Font.BOLD, 10));
         panel.add(PremioTotal);
     }
+
 }
