@@ -1,4 +1,4 @@
-package jswing;
+package jswing1;
 
 /**
  *

@@ -1,5 +1,5 @@
 //DESARROLLAMOS GRAFICAMENTE LA VENTANA
-package jswing;
+package jswing1;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -171,6 +171,7 @@ public class Ventana {
 
         //por defecto, la imagenes tienen el tamaño predeterminado. Si se quiere modificar la imagen hay que cambiarlo manualmente
         //JLabel etiquetaImagen = new JLabel(new ImageIcon("imagenes/cdmfp.jpg"));    //añadir la imagen en el constructor
+        
         ImageIcon imagen = new ImageIcon("imagenes/cdmfp.jpg");  //imagen independiente
         JLabel etiquetaImagen = new JLabel();                    //etiqueta independiente
 

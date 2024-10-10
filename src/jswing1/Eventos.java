@@ -1,5 +1,5 @@
 //TODAS LAS ACCIONES QUE VAN A OCURRIR, LOS MÉTODOS
-package jswing;
+package jswing1;
 
 /**
  *
