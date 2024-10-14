@@ -23,16 +23,16 @@ public class Ventana {
     JLabel titulo = new JLabel();
     JLabel nombre = new JLabel();
     JLabel apellido = new JLabel();
-    
+
     JTextField respnombre = new JTextField();
     JTextField respapellido = new JTextField();
-    
+
     JButton btninicio = new JButton();
 
     JLabel mostrar = new JLabel();
-    
+
     JLabel nota = new JLabel();
-    
+
     public Ventana() {
         frame.setVisible(true);
         frame.setTitle("Exámen Interfaces gráficas");
@@ -53,7 +53,7 @@ public class Ventana {
         BotonInicio();
         MostrarResultado();
         Textos();
-        
+
     }
 
     public void Panel() {
@@ -62,8 +62,7 @@ public class Ventana {
         panel.setBackground(Color.GRAY);
 
     }
-    
-    
+
     public void Textos() {
         titulo.setText("Bienvenido al Exámen de la vida");
         titulo.setFont(new Font("Gill Sans MT", Font.BOLD, 15));
@@ -76,27 +75,25 @@ public class Ventana {
         nombre.setFont(new Font("Gill Sans MT", Font.BOLD, 12));
         nombre.setBounds(50, 70, 160, 50);
         panel.add(nombre);
-        
+
         apellido.setText("Introduce tu apellido: ");
         apellido.setFont(new Font("Gill Sans MT", Font.BOLD, 12));
         apellido.setBounds(50, 140, 160, 50);
         panel.add(apellido);
-        
-        
+
+        //no consigo guardar el nombre y apellido al enviar el mensaje para que se siga visualizando el alumno
         respnombre.setBounds(200, 80, 180, 30);
         respnombre.setHorizontalAlignment(SwingConstants.CENTER);
-        respnombre.setFont(new Font("Gill Sans MT", Font.PLAIN, 10));
+        respnombre.setFont(new Font("Gill Sans MT", Font.PLAIN, 15));
         respnombre.setForeground(Color.black);
         respnombre.setBackground(Color.white);
         panel.add(respnombre);
-        
         respapellido.setBounds(200, 150, 180, 30);
         respapellido.setHorizontalAlignment(SwingConstants.CENTER);
-        respapellido.setFont(new Font("Gill Sans MT", Font.PLAIN, 10));
+        respapellido.setFont(new Font("Gill Sans MT", Font.PLAIN, 15));
         respapellido.setForeground(Color.black);
         respapellido.setBackground(Color.white);
         panel.add(respapellido);
-        
     }
 
     public void BotonInicio() {
@@ -111,32 +108,37 @@ public class Ventana {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Ventanaemergente ventana = new Ventanaemergente();
-                
+
             }
         };
         btninicio.addActionListener(inicio);
         panel.add(btninicio);
     }
-    
-    
-        public void MostrarResultado() {
+
+    public void MostrarResultado() {
         mostrar.setText("Nota del exámen: ");
         mostrar.setFont(new Font("Gill Sans MT", Font.BOLD, 15));
         mostrar.setBounds(100, 350, 200, 60);
         mostrar.setHorizontalAlignment(SwingConstants.LEFT);
         mostrar.setForeground(Color.black);
-        //mostrar.setVisible(false);
+        mostrar.setVisible(false);
         panel.add(mostrar);
-        
-        
+
         nota.setBounds(260, 360, 80, 30);
         nota.setHorizontalAlignment(SwingConstants.CENTER);
         nota.setOpaque(true);
         nota.setForeground(Color.black);
         nota.setBackground(Color.white);
         nota.setFont(new Font("Gill Sans MT", Font.BOLD, 10));
-        //nota.setVisible(false);
+        nota.setVisible(false);
         panel.add(nota);
+    }
+
+   public static void mostrarResultado(int resultado) {
+        Ventana ventana = new Ventana();
+        ventana.mostrar.setVisible(true);
+        ventana.nota.setText(String.valueOf(resultado));
+        ventana.nota.setVisible(true);
     }
 
 }
